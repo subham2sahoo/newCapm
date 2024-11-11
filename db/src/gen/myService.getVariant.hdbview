@@ -1,0 +1,7 @@
+VIEW myService_getVariant AS SELECT
+  Variant_0.NAME,
+  Variant_0.VARIANT_DATA,
+  Variant_0.DEFAULT,
+  Variant_0.APP_NAME,
+  Variant_0."USER"
+FROM my_Variant AS Variant_0

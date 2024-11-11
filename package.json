@@ -1,0 +1,55 @@
+{
+  "name": "cap",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^6.8.4",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.9.21"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-material_req": "cds watch --open materialreq/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "undeploy": "cf undeploy cap --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-mate_req": "cds watch --open mate_req/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-project1": "cds watch --open project1/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-project2": "cds watch --open project2/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-table": "cds watch --open table/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-variant": "cds watch --open variant/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "cds": {
+    "hana": {
+      "deploy-format": "hdbtable"
+    },
+    "features": {
+      "odata_new_parser": true
+    },
+    "query": {
+      "limit": {
+        "max": 10000
+      }
+    },
+    "build": {
+      "tasks": [
+        {
+          "for": "hana",
+          "dest": "../db"
+        },
+        {
+          "for": "node-cf"
+        }
+      ]
+    }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "devDependencies": {
+    "cds-plugin-ui5": "^0.9.3",
+    "rimraf": "^5.0.5"
+  }
+}

@@ -1,0 +1,60 @@
+<mvc:View xmlns:table="sap.ui.table"
+    xmlns:smartvariants="sap.ui.comp.smartvariants"
+    xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
+    xmlns:fb="sap.ui.comp.filterbar" controllerName="com.variant.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <f:DynamicPage id="dynamicPageId" showFooter="false">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <VariantManagement id="vm" supportPublic="false" modified="false" cancel="" select="onSelect" selectedKey="Standard" supportApplyAutomatically="false" supportFavorites="false" save="onSave" manage="onManage">
+                        <items>
+                            <VariantItem key="Standard" title="Standard" visible="true" executeOnSelect="false" rename="false" changeable="false" remove="false" />
+                        </items>
+                    </VariantManagement>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <fb:FilterBar id="filterbar">
+                    <fb:filterGroupItems>
+                        <fb:FilterGroupItem name="MAN_LOCATION" label="Manufacturing Location" groupName="Group1" visibleInFilterBar="true" mandatory="true">
+                            <fb:control >
+                                <Input id="idManLoc" showValueHelp="true" valueHelpRequest="onValueHelpRequest" />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem name="VERSION" label="IBP Version" groupName="Group1" visibleInFilterBar="true" mandatory="true">
+                            <fb:control>
+                                <Input id="idVer" width="14rem" showValueHelp="true" valueHelpRequest="onValueHelpRequest" />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem name="SCENARIO" label="IBP Scenario" groupName="Group1" visibleInFilterBar="true" mandatory="true">
+                            <fb:control>
+                                <Input id="idSce" width="14rem" showValueHelp="true" valueHelpRequest="onValueHelpRequest" />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem name="WEEK_DATE" label="Vaild Between" groupName="Group1" visibleInFilterBar="true" mandatory="true">
+                            <fb:control>
+                                <DateRangeSelection id="idDateRange" width="14rem" change="onFilterChange"/>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem name="MODEL_VERSION" label="Model Version" groupName="Group1" visibleInFilterBar="true">
+                            <fb:control>
+                                <ComboBox id="idModelVer" width="14rem" selectedKey="Active" change="onFilterChange">
+                                    <core:Item key="Active" text="Active" />
+                                    <core:Item key="Simulation" text="Simulation" />
+                                </ComboBox>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                    </fb:filterGroupItems>
+                </fb:FilterBar>
+            </f:DynamicPageHeader>
+        </f:header>
+    </f:DynamicPage>
+</mvc:View>
