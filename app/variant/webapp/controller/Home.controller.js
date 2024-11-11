@@ -230,7 +230,7 @@ sap.ui.define([
                 if (params.deleted) {
                     const NAMES = [];
                     params.deleted.forEach(k => {
-                        NAMES.push(that.variantData.find(o => o.key === k).NAME)
+                        NAMES.push(that.variantData.find(o => o.key === k))
                     })
                     const urlParameters = { items: JSON.stringify(NAMES), flag: "delete" };
                     await that.modelOpt("saveVariant", [], "callFunction", urlParameters);
@@ -239,7 +239,7 @@ sap.ui.define([
                     const item = that.variantData.find(o => o.key === params.def)
                     if (item) {
                         that._oVM.setSelectedKey(item.key);
-                        const urlParameters = { items: JSON.stringify(item.NAME), flag: "updateDefault" };
+                        const urlParameters = { items: JSON.stringify(item), flag: "updateDefault" };
                         await that.modelOpt("saveVariant", [], "callFunction", urlParameters);
                     }
                 }
@@ -248,7 +248,8 @@ sap.ui.define([
                     params.renamed.forEach(k => {
                         NAMES.push({
                             NAME: k.name,
-                            preName: that.variantData.find(o => o.key === k.key).NAME
+                            preName: that.variantData.find(o => o.key === k.key).NAME,
+                            appname: "Variant"
                         })
                     })
                     const urlParameters = { items: JSON.stringify(NAMES), flag: "rename" };
