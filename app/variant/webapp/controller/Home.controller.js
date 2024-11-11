@@ -13,6 +13,7 @@ sap.ui.define([
                 that.oModel = that.getOwnerComponent().getModel();
                 that._oVM = that.byId("vm");
                 that.oFilterBar = that.byId("filterbar");
+                that.appName = "Variant" ;
                 that._DialogLoc = sap.ui.xmlfragment(
                     "com.variant.fragments.loc",
                     that
@@ -249,7 +250,7 @@ sap.ui.define([
                         NAMES.push({
                             NAME: k.name,
                             preName: that.variantData.find(o => o.key === k.key).NAME,
-                            appname: "Variant"
+                            appname: that.appName 
                         })
                     })
                     const urlParameters = { items: JSON.stringify(NAMES), flag: "rename" };
@@ -292,7 +293,7 @@ sap.ui.define([
                     NAME: mParams.name,
                     VARIANT_DATA: mParams.filters,
                     DEFAULT: mParams.def,
-                    APP_NAME: "Variant"
+                    APP_NAME: that.appName 
                 };
                 that.variantData.push(variant);
                 var oItem = new VariantItem({
@@ -325,7 +326,7 @@ sap.ui.define([
                     NAME: item.Name,
                     VARIANT_DATA: JSON.stringify(item.filter),
                     DEFAULT: item.default,
-                    APP_NAME: "Variant"
+                    APP_NAME: that.appName 
                 },
                     urlParameters = { items: JSON.stringify(variant), flag: "create" };
                 await that.modelOpt("saveVariant", [], "callFunction", urlParameters);
@@ -350,7 +351,7 @@ sap.ui.define([
                     NAME: param.name,
                     VARIANT_DATA: JSON.stringify(param.filters),
                     DEFAULT: param.def,
-                    APP_NAME: "Variant"
+                    APP_NAME: that.appName 
                 },
                     urlParameters = { items: JSON.stringify(variant), flag: "updateVariant" };
                 await that.modelOpt("saveVariant", [], "callFunction", urlParameters);
