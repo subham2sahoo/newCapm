@@ -18,7 +18,7 @@ module.exports = (srv) => {
         if (flag === "delete") {
             const items = JSON.parse(req.data.items);
             items.forEach(async item => {
-                await DELETE.from(getVariant).where({ NAME: item.name }).and({ APP_NAME: item.APP_NAME });
+                await DELETE.from(getVariant).where({ NAME: item.NAME }).and({ APP_NAME: item.APP_NAME });
             })
         }
         if (flag === "updateDefault") {
