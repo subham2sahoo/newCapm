@@ -146,7 +146,13 @@ sap.ui.define([
                 }
             },
             fetchVariant: async function () {
-                that.variantData = await that.modelOpt("getVariant", [], "read");
+                const  filter = 
+                      new sap.ui.model.Filter(
+                        "APP_NAME",
+                        sap.ui.model.FilterOperator.EQ,
+                        that.appName
+                      );
+                that.variantData = await that.modelOpt("getVariant", [filter], "read");
                 that._oVM.removeAllItems();
                 that._oVM.addItem(new VariantItem({
                     key: "Standard",

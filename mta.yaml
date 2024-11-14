@@ -55,6 +55,10 @@ modules:
       - comvariant.zip
       name: comvariant
       target-path: resources/
+    - artifacts:
+      - core.zip
+      name: core
+      target-path: resources/
 - name: materialreq
   type: html5
   path: app/material_req
@@ -98,6 +102,16 @@ modules:
 - name: comvariant
   type: html5
   path: app/variant
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: core
+  type: html5
+  path: app/core
   build-parameters:
     build-result: dist
     builder: custom

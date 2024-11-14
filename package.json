@@ -20,7 +20,8 @@
     "watch-project1": "cds watch --open project1/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-project2": "cds watch --open project2/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-table": "cds watch --open table/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-variant": "cds watch --open variant/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-variant": "cds watch --open variant/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-core": "cds watch --open core/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "hana": {
