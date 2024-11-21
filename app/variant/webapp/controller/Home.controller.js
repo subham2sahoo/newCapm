@@ -13,7 +13,7 @@ sap.ui.define([
                 that.oModel = that.getOwnerComponent().getModel();
                 that._oVM = that.byId("vm");
                 that.oFilterBar = that.byId("filterbar");
-                that.appName = "Variant" ;
+                that.appName = "Variant";
                 that._DialogLoc = sap.ui.xmlfragment(
                     "com.variant.fragments.loc",
                     that
@@ -146,12 +146,12 @@ sap.ui.define([
                 }
             },
             fetchVariant: async function () {
-                const  filter = 
-                      new sap.ui.model.Filter(
+                const filter =
+                    new sap.ui.model.Filter(
                         "APP_NAME",
                         sap.ui.model.FilterOperator.EQ,
                         that.appName
-                      );
+                    );
                 that.variantData = await that.modelOpt("getVariant", [filter], "read");
                 that._oVM.removeAllItems();
                 that._oVM.addItem(new VariantItem({
@@ -174,6 +174,11 @@ sap.ui.define([
                     if (obj.DEFAULT)
                         that._oVM.setDefaultKey(obj.key);
                 })
+                that.variantData.unshift({
+                    "NAME": "Standard",
+                    "key": "Standard",
+                    "APP_NAME":that.appName
+                });
                 that.onSelect()
             },
             onSelect: function (event) {
@@ -256,7 +261,7 @@ sap.ui.define([
                         NAMES.push({
                             NAME: k.name,
                             preName: that.variantData.find(o => o.key === k.key).NAME,
-                            appname: that.appName 
+                            appname: that.appName
                         })
                     })
                     const urlParameters = { items: JSON.stringify(NAMES), flag: "rename" };
@@ -299,7 +304,7 @@ sap.ui.define([
                     NAME: mParams.name,
                     VARIANT_DATA: mParams.filters,
                     DEFAULT: mParams.def,
-                    APP_NAME: that.appName 
+                    APP_NAME: that.appName
                 };
                 that.variantData.push(variant);
                 var oItem = new VariantItem({
@@ -332,7 +337,7 @@ sap.ui.define([
                     NAME: item.Name,
                     VARIANT_DATA: JSON.stringify(item.filter),
                     DEFAULT: item.default,
-                    APP_NAME: that.appName 
+                    APP_NAME: that.appName
                 },
                     urlParameters = { items: JSON.stringify(variant), flag: "create" };
                 await that.modelOpt("saveVariant", [], "callFunction", urlParameters);
@@ -357,7 +362,7 @@ sap.ui.define([
                     NAME: param.name,
                     VARIANT_DATA: JSON.stringify(param.filters),
                     DEFAULT: param.def,
-                    APP_NAME: that.appName 
+                    APP_NAME: that.appName
                 },
                     urlParameters = { items: JSON.stringify(variant), flag: "updateVariant" };
                 await that.modelOpt("saveVariant", [], "callFunction", urlParameters);

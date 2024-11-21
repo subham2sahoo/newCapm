@@ -24,7 +24,8 @@ module.exports = (srv) => {
         if (flag === "updateDefault") {
             const item = JSON.parse(req.data.items);
             await UPDATE(getVariant).set({ DEFAULT: false }).where({ DEFAULT: true }).and({ APP_NAME: item.APP_NAME });
-            await UPDATE(getVariant).set({ DEFAULT: true }).where({ NAME: item.NAME }).and({ APP_NAME: item.APP_NAME });
+            if (item.NAME !== "Standard")
+                await UPDATE(getVariant).set({ DEFAULT: true }).where({ NAME: item.NAME }).and({ APP_NAME: item.APP_NAME });
         }
         if (flag === "rename") {
             const renamed = JSON.parse(req.data.items);
