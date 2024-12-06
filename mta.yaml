@@ -59,6 +59,10 @@ modules:
       - core.zip
       name: core
       target-path: resources/
+    - artifacts:
+      - comproduct.zip
+      name: comproduct
+      target-path: resources/
 - name: materialreq
   type: html5
   path: app/material_req
@@ -112,6 +116,16 @@ modules:
 - name: core
   type: html5
   path: app/core
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: comproduct
+  type: html5
+  path: app/product
   build-parameters:
     build-result: dist
     builder: custom

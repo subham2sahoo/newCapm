@@ -1,0 +1,23 @@
+VIEW myService_getProductionData AS SELECT
+  ProductionData_0.LOCATION_ID,
+  ProductionData_0.LOCATION_DESC,
+  ProductionData_0.PRODUCT_ID,
+  ProductionData_0.PROD_DESC,
+  ProductionData_0.ITEM_NUM,
+  ProductionData_0.ASSEMBLY,
+  ProductionData_0.ASM_DESC,
+  ProductionData_0.WEEK_DATE,
+  ProductionData_0.MODEL_VERSION,
+  ProductionData_0.VERSION,
+  ProductionData_0.SCENARIO,
+  ProductionData_0.RULE_TYPE,
+  ProductionData_0.REF_PRODID,
+  ProductionData_0.FACTORY_LOC,
+  ProductionData_0.MRP_GROUP,
+  ProductionData_0.PHANTOM_IND,
+  ProductionData_0.CONFIGURABLE,
+  ProductionData_0.REQ_TYPE,
+  ProductionData_0.ASMB_QTY,
+  ProductionData_0.CIR_QTY,
+  ProductionData_0.CIR_ASMB_QTY
+FROM my_ProductionData AS ProductionData_0

@@ -8,6 +8,7 @@
   "dependencies": {
     "@sap/cds": "^6.8.4",
     "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
+    "chart": "^0.1.2",
     "sqlite3": "^5.1.7"
   },
   "scripts": {
@@ -21,7 +22,8 @@
     "watch-project2": "cds watch --open project2/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-table": "cds watch --open table/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-variant": "cds watch --open variant/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-core": "cds watch --open core/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-core": "cds watch --open core/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-product": "cds watch --open product/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "hana": {
@@ -51,7 +53,15 @@
     "app/*"
   ],
   "devDependencies": {
+    "@datagrok/dendrogram": "^1.2.33",
     "cds-plugin-ui5": "^0.9.3",
-    "rimraf": "^5.0.5"
+    "chart.js": "^3.7.1",
+    "rimraf": "^5.0.5",
+    "ui5-tooling-modules": "^0.1.0"
+  },
+  "ui5": {
+    "dependencies": [
+      "ui5-tooling-modules"
+    ]
   }
 }

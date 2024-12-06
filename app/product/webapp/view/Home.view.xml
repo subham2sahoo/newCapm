@@ -1,0 +1,21 @@
+<mvc:View controllerName="com.product.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
+    xmlns:layout="sap.ui.layout" height="100%">
+    <f:DynamicPage id="idDynamicPage">
+
+        <f:header>
+            <f:DynamicPageHeader>
+                <smartfilterbar:SmartFilterBar id="smartFilterBar" entitySet="getProductionData" search="onGo" clear="onClear" showClearOnFB="true" smartVariant="PageVariant">
+                    <smartfilterbar:controlConfiguration>
+                        <smartfilterbar:ControlConfiguration  key="LOCATION_ID" visibleInAdvancedArea="true"  ></smartfilterbar:ControlConfiguration>
+                    </smartfilterbar:controlConfiguration>
+                </smartfilterbar:SmartFilterBar>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>
